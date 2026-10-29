@@ -2,6 +2,7 @@
 param(
     [string]$TargetRoot = (Join-Path $HOME '.codex\skills'),
     [switch]$WithSuperpowers,
+    [switch]$WithCustom,
     [switch]$Force
 )
 
@@ -22,11 +23,10 @@ function Assert-UnderTarget([string]$Path) {
     }
 }
 
-function Install-RepoSkill([string]$Name) {
-    $src = Join-Path $RepoRoot (Join-Path 'skills' $Name)
+function Install-SkillFrom([string]$Source, [string]$Name) {
     $dst = Join-Path $TargetRoot $Name
 
-    if (-not (Test-Skill $src)) { throw "Missing bundled skill: $src" }
+    if (-not (Test-Skill $Source)) { throw "Missing bundled skill: $Source" }
 
     if (Test-Skill $dst) {
         if (-not $Force) {
@@ -38,8 +38,16 @@ function Install-RepoSkill([string]$Name) {
     }
 
     New-Item -ItemType Directory -Force -Path $dst | Out-Null
-    Get-ChildItem -LiteralPath $src -Force | Copy-Item -Destination $dst -Recurse -Force
+    Get-ChildItem -LiteralPath $Source -Force | Copy-Item -Destination $dst -Recurse -Force
     Write-Host ("  [ok]   {0} -> {1}" -f $Name, $dst) -ForegroundColor Green
+}
+
+function Install-RepoSkill([string]$Name) {
+    Install-SkillFrom (Join-Path $RepoRoot (Join-Path 'skills' $Name)) $Name
+}
+
+function Install-CustomSkill {
+    Install-SkillFrom (Join-Path $RepoRoot 'custom\wangtao-workflow') 'wangtao-workflow'
 }
 
 function Install-Superpowers {
@@ -108,6 +116,12 @@ Write-Host ''
 Write-Host 'Bundled MIT skills:' -ForegroundColor Cyan
 Install-RepoSkill 'humanizer-zh'
 Install-RepoSkill 'planning-with-files'
+
+if ($WithCustom) {
+    Write-Host ''
+    Write-Host 'Custom skill:' -ForegroundColor Cyan
+    Install-CustomSkill
+}
 
 Write-Host ''
 if ($WithSuperpowers) {

@@ -32,6 +32,12 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 .\install.ps1 -WithSuperpowers
 ```
 
+想把仓库里的原创协作技能也装上：
+
+```powershell
+.\install.ps1 -WithCustom
+```
+
 ## 目录结构
 
 ```text
