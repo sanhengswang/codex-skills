@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "updated": "2026-10-29",
+  "target": "%USERPROFILE%\\.codex\\skills",
+  "skills": [
+    {
+      "name": "superpowers",
+      "kind": "upstream",
+      "source": "https://github.com/obra/superpowers",
+      "license": "MIT",
+      "install": "install.ps1 -WithSuperpowers",
+      "notes": "15 sub-skills; installed under %USERPROFILE%\\.agents\\skills on this machine"
+    },
+    {
+      "name": "pdf",
+      "kind": "builtin",
+      "source": "OpenAI Codex bundled plugin (pdf:pdf)",
+      "license": "provided with Codex; not redistributed",
+      "install": "none",
+      "notes": "Do not mirror into this repository"
+    },
+    {
+      "name": "humanizer-zh",
+      "kind": "bundled",
+      "source": "https://github.com/op7418/Humanizer-zh",
+      "commit": "f4518a8eab97b8bfebc66a89d34320a89bef6930",
+      "license": "MIT",
+      "install": "install.ps1",
+      "notes": "Mirrored with upstream LICENSE"
+    },
+    {
+      "name": "planning-with-files",
+      "kind": "bundled",
+      "source": "https://github.com/OthmanAdi/planning-with-files",
+      "commit": "5d29800bf8b919ca9a88ee7885b90050b5cb64ed",
+      "license": "MIT",
+      "install": "install.ps1",
+      "notes": "Skill body only; per-turn hooks are not included"
+    },
+    {
+      "name": "frontend-design",
+      "kind": "builtin",
+      "source": "Anthropic skills bundle",
+      "license": "Apache-2.0",
+      "install": "none",
+      "notes": "Already present in %USERPROFILE%\\.codex\\skills"
+    },
+    {
+      "name": "code-review",
+      "kind": "community",
+      "source": "local community copy, upstream not declared",
+      "license": "unknown",
+      "install": "none",
+      "notes": "Not mirrored to avoid license risk"
+    },
+    {
+      "name": "skill-creator",
+      "kind": "builtin",
+      "source": "OpenAI Codex bundled plugin (.system)",
+      "license": "provided with Codex; not redistributed",
+      "install": "none",
+      "notes": "Do not mirror into this repository"
+    }
+  ]
+}
