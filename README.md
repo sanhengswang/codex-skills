@@ -16,6 +16,8 @@
 | code-review | 以 Standards / Spec 两轴并行审查改动 | 已安装 | 本地社区技能（未标注上游） | 未标注，不镜像 |
 | skill-creator | 把重复工作流封装成新技能 | 内置 | Codex 内置 `.system` | 随 Codex 提供，不镜像 |
 
+另附原创技能 `custom/wangtao-workflow`：把本机协作约定（中文、结论先行、破坏性操作先确认等）封装成可复用技能，用 `-WithCustom` 安装。
+
 ## 一键安装
 
 ```powershell
